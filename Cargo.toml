@@ -1,6 +1,6 @@
 [package]
 name = "iwp"
-version = "0.1.0"
+version = "0.1.2"
 description = "I Want Plot -- draws a plot reading data points from stdin"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/matklad/iwp"

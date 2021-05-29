@@ -17,7 +17,8 @@ fn try_main() -> Result<()> {
         match arg.as_str() {
             "-u" | "--unmarked" => unmarked = true,
             "-h" | "--help" => {
-                println!("\
+                println!(
+                    "\
 iwp
 I Want Plot -- draws a plot reading data points from stdin.
 
@@ -32,7 +33,8 @@ USAGE:
 
 OPTIONS:
   -u, --unmarked        read two columns of numbers, don't use P! marker
-")
+"
+                )
             }
             arg => return Err(format!("unexpected argument: {}", arg).into()),
         }
@@ -89,5 +91,7 @@ fn plot(data: Vec<[f64; 2]>) -> Result<()> {
 
     let plot = plotter.render_to_string()?;
     std::fs::write("plot.svg", &plot)?;
+    let display_dst = std::env::current_dir().unwrap_or_default().join("plot.svg");
+    eprintln!("plot saved to:\n    {}", display_dst.display());
     Ok(())
 }
